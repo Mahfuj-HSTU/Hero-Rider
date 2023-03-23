@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
+	const { login } = useContext(AuthContext);
+	const navigate = useNavigate();
+
 	// handle created user login
 	const handleLogin = (event) => {
 		event.preventDefault();
 		const form = event.target;
 		const email = form.email.value;
 		const password = form.password.value;
-		const user = { email, password };
-		console.log(user);
+		// const user = { email, password };
+		// console.log(user);
+		login(email, password)
+			.then((result) => {
+				const user = result.user;
+				// console.log( user );
+				form.reset();
+				navigate('/profile');
+			})
+			.catch((error) => {
+				// console.error( 'error ', error )
+				toast.error('Register first to login');
+				form.reset();
+			});
 	};
 
 	return (
@@ -57,12 +74,12 @@ const Login = () => {
 					</div>
 				</form>
 				<p className='text-center'>
-					New to Billing{' '}
-					<Link
-						to='/registration'
+					New to Hero Rider{' '}
+					<label
+						htmlFor='sign-up-modal'
 						className='text-orange-600 font-bold cursor-pointer'>
 						Sign Up
-					</Link>
+					</label>
 				</p>
 			</div>
 		</div>

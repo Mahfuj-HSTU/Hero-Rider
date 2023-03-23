@@ -39,7 +39,7 @@ const AllUsers = () => {
 		return (
 			user.name.toLowerCase().includes(search.toLowerCase()) ||
 			user.email.includes(search) ||
-			user.role.toLowerCase().includes(search.toLowerCase())
+			user.phone.toLowerCase().includes(search.toLowerCase())
 		);
 	});
 

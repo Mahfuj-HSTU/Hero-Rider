@@ -19,11 +19,6 @@ const AuthProvider = ({ children }) => {
 
 	// console.log(user);
 
-	// google login
-	const providerLogin = (provider) => {
-		setLoading(true);
-		return signInWithPopup(auth, provider);
-	};
 	// register by create user
 	const createUser = (email, password) => {
 		setLoading(true);
@@ -59,7 +54,6 @@ const AuthProvider = ({ children }) => {
 	const authInfo = {
 		user,
 		loading,
-		providerLogin,
 		createUser,
 		login,
 		logOut,

@@ -2,10 +2,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './App.css';
 import Main from './Layout/Main';
 import Home from './Pages/Home/Home';
-import SignUp from './Pages/SignUp/Rider';
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import AllUsers from './Pages/AllUsers/AllUsers';
+import Rider from './Pages/SignUp/Rider';
+import Learner from './Pages/SignUp/Learner';
 
 function App() {
 	const router = createBrowserRouter([
@@ -19,11 +20,11 @@ function App() {
 				},
 				{
 					path: '/rider',
-					element: <SignUp></SignUp>,
+					element: <Rider></Rider>,
 				},
 				{
 					path: '/learner',
-					element: <SignUp></SignUp>,
+					element: <Learner></Learner>,
 				},
 				{
 					path: '/login',

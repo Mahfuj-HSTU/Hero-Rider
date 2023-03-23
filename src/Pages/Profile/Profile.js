@@ -16,7 +16,7 @@ const Profile = () => {
 	// console.log(details);
 
 	return (
-		<div className='mt-24'>
+		<div className='mt-24 mb-10'>
 			<h1 className='text-4xl text-slate-700 mb-10'>Your Profile</h1>
 			<div className='card card-compact w-1/2 bg-base-100 shadow-2xl mx-auto p-10'>
 				<div className='text-end'>
