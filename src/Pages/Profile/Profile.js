@@ -13,6 +13,7 @@ const Profile = () => {
 				res.json()
 			),
 	});
+	// console.log(details);
 
 	return (
 		<div className='mt-24'>
@@ -45,7 +46,17 @@ const Profile = () => {
 						<span className='font-semibold'>Address:</span> {details.address}
 					</h2>
 					<h2 className='text-2xl mb-3'>
-						<span className='font-semibold'>District:</span> {details.district}
+						<span className='font-semibold'>District:</span> {details.area}
+					</h2>
+					<h2 className='text-2xl mb-3'>
+						<span className='font-semibold'>Mobile:</span> {details.phone}
+					</h2>
+					<h2 className='text-2xl mb-3'>
+						<span className='font-semibold'>Vehicle:</span> {details.carType}
+					</h2>
+					<h2 className='text-2xl mb-3'>
+						<span className='font-semibold'>Vehicle Information:</span>{' '}
+						{details.carInfo}
 					</h2>
 					<h2 className='text-2xl mb-3'>
 						<span className='font-semibold'>Age:</span> {details.age}

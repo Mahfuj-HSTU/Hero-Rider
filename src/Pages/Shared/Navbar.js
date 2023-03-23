@@ -14,6 +14,9 @@ const Navbar = () => {
 			<li className='font-semibold'>
 				<label htmlFor='sign-up-modal'>Sign Up</label>
 			</li>
+			<li className='font-semibold'>
+				<Link to='/profile'>Profile</Link>{' '}
+			</li>
 		</>
 	);
 

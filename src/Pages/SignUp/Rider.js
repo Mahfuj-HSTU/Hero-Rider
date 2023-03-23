@@ -91,7 +91,7 @@ const Rider = () => {
 									toast.success('Registration successful.');
 									// setCreatedUserEmail( user?.email );
 									// console.log( user );
-									// navigate(from, { replace: true });
+									navigate('/profile');
 								}
 							});
 					};

@@ -4,6 +4,8 @@ import Main from './Layout/Main';
 import Home from './Pages/Home/Home';
 import SignUp from './Pages/SignUp/Rider';
 import Login from './Pages/Login/Login';
+import Profile from './Pages/Profile/Profile';
+import AllUsers from './Pages/AllUsers/AllUsers';
 
 function App() {
 	const router = createBrowserRouter([
@@ -24,8 +26,16 @@ function App() {
 					element: <SignUp></SignUp>,
 				},
 				{
-					path: 'login',
+					path: '/login',
 					element: <Login></Login>,
+				},
+				{
+					path: '/profile',
+					element: <Profile></Profile>,
+				},
+				{
+					path: '/users',
+					element: <AllUsers></AllUsers>,
 				},
 			],
 		},
