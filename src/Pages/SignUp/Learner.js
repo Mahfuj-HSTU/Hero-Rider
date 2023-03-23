@@ -17,7 +17,6 @@ const Learner = () => {
 	// handle user create
 	const handleRegister = (data) => {
 		const profileImage = data.profile_img[0];
-		const licence = data.dr_img[0];
 		const nidCard = data.nid_img[0];
 		console.log(profileImage);
 		const formData = new FormData();

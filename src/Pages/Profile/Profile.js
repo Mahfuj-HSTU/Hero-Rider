@@ -9,7 +9,7 @@ const Profile = () => {
 	const { data: details = [] } = useQuery({
 		queryKey: ['details'],
 		queryFn: () =>
-			fetch(`http://localhost:5000/users/${user.email}`).then((res) =>
+			fetch(`http://localhost:5000/users/${user?.email}`).then((res) =>
 				res.json()
 			),
 	});

@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -5,6 +6,15 @@ import SignUpModal from '../SignUp/SignUpModal';
 
 const Navbar = () => {
 	const { user, logOut } = useContext(AuthContext);
+
+	const { data: details = [] } = useQuery({
+		queryKey: ['details'],
+		queryFn: () =>
+			fetch(`http://localhost:5000/users/${user?.email}`).then((res) =>
+				res.json()
+			),
+	});
+	// console.log(details.role);
 
 	const handleLogOut = () => {
 		logOut().then().catch();
@@ -20,6 +30,11 @@ const Navbar = () => {
 					<li className='font-semibold'>
 						<Link to='/profile'>Profile</Link>{' '}
 					</li>
+					{details.role === 'admin' && (
+						<li className='font-semibold'>
+							<Link to='/users'>All Users</Link>{' '}
+						</li>
+					)}
 					<li>
 						{' '}
 						<button

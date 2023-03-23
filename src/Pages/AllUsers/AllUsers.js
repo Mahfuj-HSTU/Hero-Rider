@@ -5,11 +5,16 @@ import Search from './Search';
 const AllUsers = () => {
 	const [search, setSearch] = useState('');
 
-	const { data: users = [] } = useQuery({
-		queryKey: ['details'],
-		queryFn: () =>
-			fetch('http://localhost:5000/users').then((res) => res.json()),
+	const { data: users = [], refetch } = useQuery({
+		queryKey: ['users'],
+		queryFn: async () => {
+			const res = await fetch('http://localhost:5000/users');
+			const data = await res.json();
+			return data;
+		},
 	});
+
+	console.log(users);
 
 	const handleDelete = (user) => {
 		const agree = window.confirm(`Are sure, you want to delete: ${user.name}`);
@@ -22,6 +27,7 @@ const AllUsers = () => {
 					// console.log( data )
 					if (data.deletedCount > 0) {
 						alert('user deleted successfully.');
+						refetch();
 					}
 				});
 		}
@@ -35,7 +41,7 @@ const AllUsers = () => {
 		setSearch(search);
 	};
 
-	const filteredSearch = users.filter((user) => {
+	const filteredSearch = users?.filter((user) => {
 		return (
 			user.name.toLowerCase().includes(search.toLowerCase()) ||
 			user.email.includes(search) ||
@@ -44,7 +50,7 @@ const AllUsers = () => {
 	});
 
 	return (
-		<div className='mt-20  mx-3 md:mx-12 lg:mx-10 '>
+		<div className='mt-20  mx-3 md:mx-12 lg:mx-10 mb-10'>
 			<div className='lg:flex lg:justify-between mb-5 py-2 px-4 bg-slate-300 rounded-lg'>
 				<h2 className='text-4xl mb-4'>All Users</h2>
 				<form
@@ -65,7 +71,7 @@ const AllUsers = () => {
 			</div>
 			<div>
 				<div>
-					{search.length !== 0 && (
+					{search?.length !== 0 && (
 						<Search
 							filteredSearch={filteredSearch}
 							handleDelete={handleDelete}></Search>
