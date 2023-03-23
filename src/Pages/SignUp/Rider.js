@@ -19,10 +19,11 @@ const Rider = () => {
 		const profileImage = data.profile_img[0];
 		const licence = data.dr_img[0];
 		const nidCard = data.nid_img[0];
-		// const image = { profileImage, licence, nidCard };
+		console.log(profileImage);
 		const formData = new FormData();
-		formData.append('profileImage', 'licence', profileImage, licence);
-		const imgUrl = `https://api.imgbb.com/1/upload?&key=${imageHostKey}`;
+		formData.append('image', profileImage);
+		formData.append('image', profileImage);
+		const imgUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
 		console.log(formData);
 
 		fetch(imgUrl, {
@@ -31,6 +32,8 @@ const Rider = () => {
 		})
 			.then((res) => res.json())
 			.then((imgData) => {
+				console.log(imgData.data.url);
+
 				if (imgData.success) {
 					// const profileImage = imgData.data.url;
 					// const licence = imgData.data.url;
@@ -71,10 +74,10 @@ const Rider = () => {
 							carInfo,
 							carType,
 							phone,
-							password,
 							role,
 						};
-						fetch('', {
+						console.log(user);
+						fetch('http://localhost:5000/users', {
 							method: 'POST',
 							headers: {
 								'content-type': 'application/json',
